@@ -21,7 +21,7 @@ root.render(
         <Route exact path="/coaching/:id" element={<Details />}></Route>
         <Route exact path="/home" element={<App />}></Route>
         <Route exact path="/" element={<StudentForm />}></Route>
-        <Route exact path="/listing" element={<TeacherForm />}></Route>
+        <Route  path="/listing" element={<TeacherForm />}></Route>
       </Routes>
     </Router>
   </React.StrictMode>
