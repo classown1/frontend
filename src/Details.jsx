@@ -24,12 +24,6 @@ export default function Details() {
   let { id } = useParams();
   //   console.log(id);
   const [data, setData] = useState({});
-
-  // const settingData = () => {
-  //   const dataVal = document.getElementById("dataVal");
-  //   const change = dataVal.innerText;
-  //   dataVal.innerHTML = change;
-  // };
   const displayRef = useRef();
 
   const getData = () => {
@@ -37,15 +31,18 @@ export default function Details() {
       .get(`https://classown.herokuapp.com/api/coaching/${id}`)
       .then(function (res) {
         setData(res.data);
-      })
-      .then(function () {
-        displayRef.current.innerHTML = displayRef.current.innerText;
       });
   };
 
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect(() => {
+    console.log("Hi");
+    const change = data.content;
+    displayRef.current.innerHTML = change;
+  }, [data]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
