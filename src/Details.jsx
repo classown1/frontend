@@ -25,16 +25,18 @@ export default function Details() {
   //   console.log(id);
   const [data, setData] = useState({});
 
+  const settingData = () => {
+    const dataVal = document.getElementById("dataVal");
+    const change = dataVal.innerText;
+    dataVal.innerHTML = change;
+  };
+
   const getData = () => {
     axios
       .get(`https://classown.herokuapp.com/api/coaching/${id}`)
       .then(function (res) {
         setData(res.data);
-        // console.log(data)\
-        console.log(res.data);
-        const dataVal = document.getElementById("dataVal");
-        const change = dataVal.innerText;
-        dataVal.innerHTML = change;
+        settingData();
       });
   };
 
@@ -95,7 +97,6 @@ export default function Details() {
               Query
             </button>
           </div>
-          
         </div>
       </div>
       <Footer />
