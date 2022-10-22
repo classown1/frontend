@@ -25,18 +25,23 @@ export default function Details() {
   //   console.log(id);
   const [data, setData] = useState({});
 
-  const settingData = () => {
-    const dataVal = document.getElementById("dataVal");
-    const change = dataVal.innerText;
-    dataVal.innerHTML = change;
-  };
+  // const settingData = () => {
+  //   const dataVal = document.getElementById("dataVal");
+  //   const change = dataVal.innerText;
+  //   dataVal.innerHTML = change;
+  // };
 
   const getData = () => {
     axios
       .get(`https://classown.herokuapp.com/api/coaching/${id}`)
       .then(function (res) {
         setData(res.data);
-        settingData();
+        // settingData();
+      })
+      .then(function () {
+        const dataVal = document.getElementById("dataVal");
+        const change = dataVal.innerText;
+        dataVal.innerHTML = change;
       });
   };
 
