@@ -14,7 +14,7 @@ export default function Brand() {
     <section className="branding-section">
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container-fluid container">
-          <a className="navbar-brand" href="/home">
+          <a className="navbar-brand" href="/">
             Classown
           </a>
         </div>
