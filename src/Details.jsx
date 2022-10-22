@@ -30,18 +30,16 @@ export default function Details() {
   //   const change = dataVal.innerText;
   //   dataVal.innerHTML = change;
   // };
+  const displayRef = useRef();
 
   const getData = () => {
     axios
       .get(`https://classown.herokuapp.com/api/coaching/${id}`)
       .then(function (res) {
         setData(res.data);
-        // settingData();
       })
       .then(function () {
-        const dataVal = document.getElementById("dataVal");
-        const change = dataVal.innerText;
-        dataVal.innerHTML = change;
+        displayRef.current.innerHTML = displayRef.current.innerText;
       });
   };
 
@@ -53,6 +51,7 @@ export default function Details() {
     e.preventDefault();
     window.location.href = "/studentForm";
   };
+
   return (
     <div className="details">
       <Header />
@@ -62,7 +61,7 @@ export default function Details() {
           <img className="profilePic" src={data.coachingOwnerPic} alt="" />
           <h1>{data.coachingName}</h1>
         </div>
-        <div id="dataVal" className="dataVal">
+        <div id="dataVal" ref={displayRef} className="dataVal">
           {data.content}
         </div>
         <div className="button-container">
